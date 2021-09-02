@@ -58,4 +58,4 @@ async def add(message,*,vals):
     sume+=ele_int
   await message.send(sume)
 
-client.run("ODI1NjIwNTQ4NzcxNjQzMzky.YGAlDg.nDwkoueiE_eEqMU3s3yyl9_CqCE")
+client.run("token goes here")
