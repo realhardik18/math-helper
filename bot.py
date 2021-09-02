@@ -35,10 +35,8 @@ async def solve(ctx):
         question=extracter(imageName)
         embed=discord.Embed(title="Here are the list of possible solutions", description="taken from [google](https://www.google.com/)", color=0xe74c3c)
         embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/825620548771643392/585c7883ffa07cea5ad0e2b0bf48e3af.webp?size=1024")
-        x=1
         for result in search_google(question):
           embed.add_field(name=f"solution number {x} link:", value=f"{result}", inline=False)
-          x+=1
         await ctx.send(embed=embed)
         os.remove(imageName)
 client.run("bot token goes here")
