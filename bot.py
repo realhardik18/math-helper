@@ -1,4 +1,5 @@
 import discord
+from discord import message
 from discord.ext import commands
 import uuid
 import requests
@@ -6,6 +7,8 @@ import shutil
 from extractor import extracter
 import os
 from googler import search_google
+from math_methods import lin_in_2_var,add
+
 
 client = commands.Bot(command_prefix="`")
 client.remove_command('help')
@@ -41,4 +44,18 @@ async def solve(ctx):
           x+=1
         await ctx.send(embed=embed)
         os.remove(imageName)
-client.run("bot token goes here")
+  
+@client.command()
+async def lin2v(message,*,vals):
+  await message.send(lin_in_2_var(vals))
+
+@client.command()
+async def add(message,*,vals):
+  sume=0
+  vals_split=vals.split(" ")
+  for ele in vals_split:
+    ele_int=int(ele)
+    sume+=ele_int
+  await message.send(sume)
+
+client.run("ODI1NjIwNTQ4NzcxNjQzMzky.YGAlDg.nDwkoueiE_eEqMU3s3yyl9_CqCE")
