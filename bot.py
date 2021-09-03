@@ -7,8 +7,7 @@ import shutil
 from extractor import extracter
 import os
 from googler import search_google
-from math_methods import lin_in_2_var,add
-
+from math_methods import lin_in_2_var
 
 client = commands.Bot(command_prefix="`")
 client.remove_command('help')
@@ -21,6 +20,19 @@ async def on_ready():
 @client.command()
 async def test(ctx):
   await ctx.send("yes chef")
+
+@client.command()
+async def help(ctx):
+  embed=discord.Embed(title="here are the list of all available commands", description="more commands coming soon!", color=0xf1c40f)
+  embed.add_field(name="to solve a problem with an image", value="attach an image and name the caption as **`solve**\nthis will take maximum 5 seconds to work, if you do not get any response by then, it means we had trouble processing the image!", inline=False)
+  embed.add_field(name="to solve linear questions in 2 variables", value="**`lin2v first_equation,second_equation**\nhere are some things to keep in mind while using this command:\nput equations  as 2x + 5y + 2, 5x + 2y - 2(the first variable should always be x and second should always be y)", inline=False)
+  embed.add_field(name="to add multiple numbers", value="**`add num1 num2 num3 num_n**", inline=False)
+  embed.add_field(name="to multiply multiple numbers", value="**`mul num1 num2 num3 num_n**", inline=False)
+  embed.add_field(name="to divide two numbers", value="**`div num1 num2\nthis returns num1/num2**", inline=False)  
+  embed.add_field(name="to subtract two numbers", value="**`sub num1 num2\nthis returns num1-num2**", inline=False)
+  embed.add_field(name="credits", value="this bot was made by [Realhardik18](https://realhardik18.github.io) and help from dbamogh#2366", inline=False)
+  embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/825620548771643392/585c7883ffa07cea5ad0e2b0bf48e3af.webp?size=1024")
+  await ctx.send(embed=embed)
 
 @client.command()
 async def solve(ctx):
@@ -47,15 +59,50 @@ async def solve(ctx):
   
 @client.command()
 async def lin2v(message,*,vals):
-  await message.send(lin_in_2_var(vals))
+  try:
+    await message.send(lin_in_2_var(vals))
+  except IndexError:
+    await message.send("please enter the values in the correct format!\nyou can check the formot from the help command!")
 
 @client.command()
 async def add(message,*,vals):
-  sume=0
-  vals_split=vals.split(" ")
-  for ele in vals_split:
-    ele_int=int(ele)
-    sume+=ele_int
-  await message.send(sume)
+  try:
+    sume=0
+    vals_split=vals.split(" ")
+    for ele in vals_split:
+      ele_int=float(ele)
+      sume+=ele_int
+    await message.send(sume)
+  except ValueError:
+    await message.send("make sure all the values are integers/decimals!")
+
+@client.command()
+async def mul(message,*,vals):
+  try:
+    prod=1
+    vals_split=vals.split(' ')
+    for ele in vals_split:
+      ele_int=int(ele)
+      prod*=ele_int
+    await message.send(prod)
+  except ValueError:
+    await message.send("make sure all the values are integers/decimals!")
+
+@client.command()
+async def sub(message,val1,val2):
+  try:
+    await message.send(float(val1)-float(val2))
+  except ValueError:
+    await message.send("make sure all the values are integers/decimals!")
+
+@client.command()
+async def div(message,val1,val2):
+  try:
+    if val2=='0':
+      await message.send("you cannot divide by zero!")
+    elif val2!='0':
+      await message.send(f"the quotient is {float(val1)/float(val2)}\nand the remainder is {float(val1)%float(val2)}")
+  except ValueError:
+    await message.send("make sure all the values are integers/decimals!")
 
 client.run("token goes here")

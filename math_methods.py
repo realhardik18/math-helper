@@ -62,7 +62,3 @@ def lin_in_2_var(a):#code contributed by dbamogh
     x = int(x)
     result=f"the value of x is {str(x)} and the value of y is {str(y)}"
     return result
-
-def add(vals):
-    val_split=vals.split()
-    return sum(val_split)
