@@ -8,6 +8,7 @@ from extractor import extracter
 import os
 from googler import search_google
 from math_methods import lin_in_2_var
+from decouple import config
 
 client = commands.Bot(command_prefix="`")
 client.remove_command('help')
@@ -105,4 +106,4 @@ async def div(message,val1,val2):
   except ValueError:
     await message.send("make sure all the values are integers/decimals!")
 
-client.run("token goes here")
+client.run(config("BOT_TOKEN"))

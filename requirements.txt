@@ -1,0 +1,6 @@
+py-cord
+pytesseract
+beautifulsoup4
+google
+Pillow
+python-decouple
