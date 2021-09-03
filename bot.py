@@ -30,7 +30,7 @@ async def help(ctx):
   embed.add_field(name="to multiply multiple numbers", value="**`mul num1 num2 num3 num_n**", inline=False)
   embed.add_field(name="to divide two numbers", value="**`div num1 num2\nthis returns num1/num2**", inline=False)  
   embed.add_field(name="to subtract two numbers", value="**`sub num1 num2\nthis returns num1-num2**", inline=False)
-  embed.add_field(name="credits", value="this bot was made by [Realhardik18](https://realhardik18.github.io) and help from dbamogh#2366", inline=False)
+  embed.add_field(name="credits", value="this bot was made by [Realhardik18](https://realhardik18.github.io)\nspecial thanks to [ankushkun](https://ankushkun.github.io/) and dbamogh#2366", inline=False)
   embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/825620548771643392/585c7883ffa07cea5ad0e2b0bf48e3af.webp?size=1024")
   await ctx.send(embed=embed)
 

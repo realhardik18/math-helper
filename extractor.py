@@ -4,7 +4,7 @@ from pytesseract import pytesseract
 
 def extracter(file_name):
     path_to_tesseract = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-    image_path = fr"C:\Users\hardik\OneDrive\Documents\Python Scripts\math bot discord\{file_name}" 
+    image_path = fr"{file_name.png}"
     img = Image.open(image_path)
     img_gray=ImageOps.grayscale(img)
     pytesseract.tesseract_cmd = path_to_tesseract
