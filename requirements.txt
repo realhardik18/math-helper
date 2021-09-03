@@ -4,3 +4,4 @@ beautifulsoup4
 google
 Pillow
 python-decouple
+requests
