@@ -1,6 +1,7 @@
 
 from PIL import Image,ImageOps
 from pytesseract import pytesseract
+import os
 
 def extracter(file_name):
     path_to_tesseract = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
