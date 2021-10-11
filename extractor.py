@@ -5,7 +5,7 @@ import os
 
 def extracter(file_name):
     path_to_tesseract = "/app/.apt/usr/bin/tesseract"
-    image_path = fr"{file_name}"
+    image_path = file_name
     img = Image.open(image_path)
     img_gray=ImageOps.grayscale(img)
     pytesseract.tesseract_cmd = path_to_tesseract

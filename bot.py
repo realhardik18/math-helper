@@ -37,7 +37,6 @@ async def help(ctx):
 
 @client.command()
 async def solve(ctx):
-  '''
   try:
     url = ctx.message.attachments[0].url           
   except IndexError:
@@ -57,9 +56,8 @@ async def solve(ctx):
           embed.add_field(name=f"solution number {x} link:", value=f"{result}", inline=False)
           x+=1
         await ctx.send(embed=embed)
-        os.remove(imageName)
-        '''
-  await ctx.send("this command is still under development")
+        #os.remove(imageName)
+  #await ctx.send("this command is still under development")
 
 
 @client.command()
