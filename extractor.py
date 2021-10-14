@@ -4,7 +4,7 @@ from pytesseract import pytesseract
 import os
 
 def extracter(file_name):
-    path_to_tesseract = "/app/.apt/usr/bin/tesseract"
+    path_to_tesseract = "TESSDATA_PREFIX"
     image_path = file_name
     img = Image.open(image_path)
     img_gray=ImageOps.grayscale(img)
