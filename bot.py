@@ -16,7 +16,7 @@ client.remove_command('help')
 @client.event
 async def on_ready():
   print("im alive and working!!(logged in as {0.user})".format(client))
-  await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="For `help"))
+  await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="for `help"))
 
 @client.command()
 async def test(ctx):
