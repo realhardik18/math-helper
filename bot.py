@@ -37,7 +37,7 @@ async def help(ctx):
 
 @client.command()
 async def solve(ctx):
-  #'''
+  '''
   try:
     url = ctx.message.attachments[0].url           
   except IndexError:
@@ -58,8 +58,8 @@ async def solve(ctx):
           x+=1
         await ctx.send(embed=embed)
         #os.remove(imageName)
-        #'''
-  #await ctx.send("this command is still under development")
+        '''
+  await ctx.send("this command is still under development")
 
 
 @client.command()
