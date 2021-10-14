@@ -2,9 +2,11 @@
 from PIL import Image,ImageOps
 from pytesseract import pytesseract
 import os
+from decouple import config
+
 
 def extracter(file_name):
-    path_to_tesseract = "TESSDATA_PREFIX"
+    path_to_tesseract = config("TESSDATA_PREFIX")
     image_path = file_name
     img = Image.open(image_path)
     img_gray=ImageOps.grayscale(img)
