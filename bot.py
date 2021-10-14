@@ -24,7 +24,7 @@ async def test(ctx):
 
 @client.command()
 async def help(ctx):
-  embed=discord.Embed(title="here are the list of all available commands", description="more commands coming soon!", color=0xf1c40f)
+  embed=discord.Embed(title="here are the list of all available commands", description="more commands coming soon!", color=0xe74c3c)
   embed.add_field(name="to solve a problem with an image", value="attach an image and name the caption as **`solve**\nthis will take maximum 5 seconds to work, if you do not get any response by then, it means we had trouble processing the image!", inline=False)
   embed.add_field(name="to solve linear questions in 2 variables", value="**`lin2v first_equation,second_equation**\nhere are some things to keep in mind while using this command:\nput equations  as 2x + 5y + 2, 5x + 2y - 2(the first variable should always be x and second should always be y)", inline=False)
   embed.add_field(name="to add multiple numbers", value="**`add num1 num2 num3 num_n**", inline=False)
