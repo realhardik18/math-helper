@@ -21,7 +21,7 @@ async def on_command_error(ctx, error):
 @client.event
 async def on_ready():
   print("im alive and working!!(logged in as {0.user})".format(client))
-  await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="for `help"))
+  await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="for `help list"))
 
 @client.command()
 async def test(ctx):
@@ -37,7 +37,7 @@ async def help(ctx,comnd):
     embed.add_field(name="to multiply multiple numbers", value="type **`help mul** for more info!", inline=False)
     embed.add_field(name="to divide two numbers", value="type **`help div** for more info!", inline=False)  
     embed.add_field(name="to subtract two numbers", value="type **`help sub** for more info!", inline=False)
-    embed.add_field(name="credits", value="this bot was made by [realhardik18](https://realhardik18.github.io)", inline=False)
+    embed.add_field(name="credits", value="this bot was made by [realhardik18](https://realhardik18.github.io)\nto add me in your server [click here](https://dsc.gg/maths-helper)", inline=False)
     embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/825620548771643392/585c7883ffa07cea5ad0e2b0bf48e3af.webp?size=1024")
     await ctx.send(embed=embed)
   elif comnd=="solve":
