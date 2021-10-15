@@ -28,17 +28,48 @@ async def test(ctx):
   await ctx.send("yes chef")
 
 @client.command()
-async def help(ctx):
-  embed=discord.Embed(title="here are the list of all available commands", description="more commands coming soon!", color=0xe74c3c)
-  embed.add_field(name="to solve a problem with an image", value="attach an image and name the caption as **`solve**\nthis will take maximum 5 seconds to work, if you do not get any response by then, it means we had trouble processing the image!", inline=False)
-  embed.add_field(name="to solve linear questions in 2 variables", value="**`lin2v first_equation,second_equation**\nhere are some things to keep in mind while using this command:\nput equations  as 2x + 5y + 2, 5x + 2y - 2(the first variable should always be x and second should always be y)", inline=False)
-  embed.add_field(name="to add multiple numbers", value="**`add num1 num2 num3 num_n**", inline=False)
-  embed.add_field(name="to multiply multiple numbers", value="**`mul num1 num2 num3 num_n**", inline=False)
-  embed.add_field(name="to divide two numbers", value="**`div num1 num2\nthis returns num1/num2**", inline=False)  
-  embed.add_field(name="to subtract two numbers", value="**`sub num1 num2\nthis returns num1-num2**", inline=False)
-  embed.add_field(name="credits", value="this bot was made by [Realhardik18](https://realhardik18.github.io)\nspecial thanks to [ankushkun](https://ankushkun.github.io/) and dbamogh#2366", inline=False)
-  embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/825620548771643392/585c7883ffa07cea5ad0e2b0bf48e3af.webp?size=1024")
-  await ctx.send(embed=embed)
+async def help(ctx,comnd):
+  if comnd=="list":
+    embed=discord.Embed(title="here are the list of all available commands", description="more commands coming soon!", color=0xf1c40f)
+    embed.add_field(name="to solve a problem with an image", value="type **`help solve** for more info!", inline=False)
+    embed.add_field(name="to solve linear questions in 2 variables", value="type **`help lin2v** for more info!", inline=False)
+    embed.add_field(name="to add multiple numbers", value="type **`help add** for more info!", inline=False)
+    embed.add_field(name="to multiply multiple numbers", value="type **`help mul** for more info!", inline=False)
+    embed.add_field(name="to divide two numbers", value="type **`help div** for more info!", inline=False)  
+    embed.add_field(name="to subtract two numbers", value="type **`help sub** for more info!", inline=False)
+    embed.add_field(name="credits", value="this bot was made by [realhardik18](https://realhardik18.github.io)", inline=False)
+    embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/825620548771643392/585c7883ffa07cea5ad0e2b0bf48e3af.webp?size=1024")
+    await ctx.send(embed=embed)
+  elif comnd=="solve":
+    embed=discord.Embed(title="how to use the `solve command", description="more info about the `solve feature", color=0xf1c40f)
+    embed.add_field(name="basic requirments", value="attach an image with caption **`solve**\nmake sure the image is clear and readable\nif the bot takes more than 5 seconds to respond, it means it was not able to recognize the text from the image!", inline=False)
+    await ctx.send(embed=embed)
+  elif comnd=="lin2v":
+    embed=discord.Embed(title="how to use the `lin2v command", description="more info about the `lin2v feature", color=0xf1c40f)
+    embed.add_field(name="input format", value="`lin2v first_equation,second_equation", inline=False)
+    embed.add_field(name="things to keep in mind", value="put equations as 2x + 5y + 2, 5x + 2y - 2(the first variable should always be x and second should always be y)")
+    embed.add_field(name="usecase example",value="`lin2v 2x + 5y + 2, 5x + 2y - 2")
+    await ctx.send(embed=embed)
+  elif comnd=="mul":
+    embed=discord.Embed(title="how to use the `mul command", description="more info about the `mul feature", color=0xf1c40f)
+    embed.add_field(name="input format", value="`mul number1 number2 numbern", inline=False)
+    embed.add_field(name="things to keep in mind", value="make sure the numbers are seprated by a space, the feature requires a minimum input of 2 numbers, you can add more numbers as per your requirment!")
+    await ctx.send(embed=embed)
+  elif comnd=="add":
+    embed=discord.Embed(title="how to use the `add command", description="more info about the `add feature", color=0xf1c40f)
+    embed.add_field(name="input format", value="`add number1 number2 numbern", inline=False)
+    embed.add_field(name="things to keep in mind", value="make sure the numbers are seprated by a space, the feature requires a minimum input of 2 numbers, you can add more numbers as per your requirment!")
+    await ctx.send(embed=embed)
+  elif comnd=="div":
+    embed=discord.Embed(title="how to use the `div command", description="more info about the `div feature", color=0xf1c40f)
+    embed.add_field(name="input format", value="`div number1 number2", inline=False)
+    embed.add_field(name="things to keep in mind", value="this will return number1/number2")
+    await ctx.send(embed=embed)
+  elif comnd=="sub":
+    embed=discord.Embed(title="how to use the `sub command", description="more info about the `sub feature", color=0xf1c40f)
+    embed.add_field(name="input format", value="`sub number1 number2", inline=False)
+    embed.add_field(name="things to keep in mind", value="this will return number1-number2")
+    await ctx.send(embed=embed)
 
 @client.command()
 @commands.cooldown(1, 15, commands.BucketType.user)
