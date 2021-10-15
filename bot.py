@@ -14,6 +14,11 @@ client = commands.Bot(command_prefix="`")
 client.remove_command('help')
 
 @client.event
+async def on_command_error(ctx, error):
+  if isinstance(error, commands.errors.CommandOnCooldown):  
+    await ctx.send('to prevent spam, i have a cooldown of 15 seconds!')
+
+@client.event
 async def on_ready():
   print("im alive and working!!(logged in as {0.user})".format(client))
   await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="for `help"))
@@ -36,6 +41,7 @@ async def help(ctx):
   await ctx.send(embed=embed)
 
 @client.command()
+@commands.cooldown(1, 15, commands.BucketType.user)
 async def solve(ctx):
   #'''
   try:
