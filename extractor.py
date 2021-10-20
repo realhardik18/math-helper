@@ -1,11 +1,8 @@
-
 from PIL import Image,ImageOps
 from pytesseract import pytesseract
 import os
 from decouple import config
-
-
-def extracter(file_name):
+def extractor(file_name):
     path_to_tesseract = "/app/.apt/usr/bin/tesseract"
     image_path = file_name
     img = Image.open(image_path)
