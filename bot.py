@@ -1,13 +1,12 @@
 import discord
 from discord import message
 from discord.ext import commands
-import uuid
-import requests
-import shutil
+import uuid, requests, shutil, json
 from extractor import extractor
 import os
-from googler import search_google
-from math_methods import lin_in_2_var
+from googler import *
+from math_methods import *
+from wolfram import *
 from decouple import config
 
 client = commands.Bot(command_prefix="`")
@@ -89,11 +88,22 @@ async def solve(ctx):
         question=extractor(imageName)
         embed=discord.Embed(title="Here are the list of possible solutions", description="taken from [google](https://www.google.com/)", color=0xe74c3c)
         embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/825620548771643392/585c7883ffa07cea5ad0e2b0bf48e3af.webp?size=1024")
-        embed.add_field(name="Wolfram output: ")
         x=1
         for result in search_google(question):
           embed.add_field(name=f"Link to solution {x}: ", value=f"{result}", inline=False)
           x+=1
+        # Wolfram
+        embed.add_field(name="Wolfram output: ")
+        wlfParsedOut = json.load(wlfAlpha(question))
+        if wlfParsedOut == 'unparsed':
+          embed.add_field(name="\tWolfram Alpha could not parse this equation.")
+        else:
+          embed.add_field(name="Images: ")
+          for i in range(len(wlfParsedOut)):
+            embed.set_image(wlfParsedOut['images'][i])
+          embed.add_field(name="Other Results:")
+          for i in range(len(wlfParsedOut)):
+            embed.add_field(name=wlfParsedOut['text'][i].split('__SUBPODS__')[0], value=wlfParsedOut['text'][i].split('__SUBPODS__')[1])
         await ctx.send(embed=embed)
         #os.remove(imageName)
         #'''
